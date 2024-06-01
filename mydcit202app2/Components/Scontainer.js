@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 
   label: {
     position: 'absolute',
-    top: 10,
+    top: 213,
     left: 10,
     backgroundColor: 'rgba(255, 255, 255, 0.7)', 
     paddingHorizontal: 5,
