@@ -1,5 +1,9 @@
 # rn-assignment3-11047613
 
+## Screenshot
+![Screenshot](https://github.com/JD-2104/rn-assignment3-11047613/assets/151099828/ed2be03a-986a-472e-8522-3f9d577b717e)
+
+
 SafeAreaView
 The SafeAreaView component ensures that content is displayed within the safe area boundaries of a device. 
 Button
