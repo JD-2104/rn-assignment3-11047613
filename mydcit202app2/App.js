@@ -36,15 +36,6 @@ const ProfileImage = require("./assets/images/profile.png");
 const FilterImage = require("./assets/images/filter.png");
 
 
-const handleFilterPress = () => {
-  alert('Filter button pressed.\nCannot use button component for android to render images through expo go');
-};
-
-
-const handleButtonPress = () => {
-  alert('Button can only be rendered using string (for android using expo)\nThank you for your time')
-}
-
 const App =() => {
 
   return (
@@ -73,7 +64,7 @@ const App =() => {
        <TextInput placeholder='Search' placeholderTextColor='#999' style={{backgroundColor: "white", width: 150, height: 40, borderRadius: 10, marginLeft: 45, }} /> 
       </View>
 
-      <Pressable onPress={handleFilterPress}>
+      <Pressable>
       <Image source={FilterImage} style={{height: 50, width: 50, marginLeft: 18, }} /> 
       </Pressable>
 
@@ -111,7 +102,6 @@ const App =() => {
           />
       </View>
 
-      <Button title='Test'onPress={handleButtonPress} style={{height: 20, marginTop: 20,}}/>
 
     </ScrollView>
     </View>
