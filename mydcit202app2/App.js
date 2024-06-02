@@ -7,7 +7,7 @@ const verticalData = [
   { key: '1', label: 'Mobile App Development' },
   { key: '2', label: 'Web Development' },
   { key: '3', label: 'Frontend Development' },
-  { key: '4', label: 'Algorithms' },
+  { key: '4', label: 'Mathematics' },
   { key: '5', label: 'Data Structures' },
   { key: '6', label: 'Networking' },
   { key: '7', label: 'Cloud Computing' },
@@ -34,7 +34,7 @@ const horizontalData = [
 
 const ProfileImage = require("./assets/images/profile.png");
 const FilterImage = require("./assets/images/filter.png");
-const SearchImage = require("./assets/images/search.png");
+
 
 const handleFilterPress = () => {
   alert('Filter button pressed.\nCannot use button component for android to render images through expo go');
@@ -70,7 +70,7 @@ const App =() => {
       
       <View style={{backgroundColor: "white", width: 280, height: 47, marginLeft: 10, borderRadius: 10, top: 3,}}>
         
-       <TextInput placeholder='Search' placeholderTextColor='#999' style={{backgroundColor: "white", width: 150, height: 40, borderRadius: 10, marginLeft: 45, top: -23, }} /> 
+       <TextInput placeholder='Search' placeholderTextColor='#999' style={{backgroundColor: "white", width: 150, height: 40, borderRadius: 10, marginLeft: 45, }} /> 
       </View>
 
       <Pressable onPress={handleFilterPress}>
