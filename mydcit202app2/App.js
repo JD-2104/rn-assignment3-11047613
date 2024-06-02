@@ -1,92 +1,129 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, FlatList, ScrollView, TextInput, Image } from 'react-native';
-import Rcontainer from './Components/Rcontainer';
+import { SafeAreaView, Button, Pressable, StyleSheet, ScrollView, Image, TextInput, Text, View, FlatList } from 'react-native';
 import Scontainer from './Components/Scontainer';
+import Rcontainer from './Components/Rcontainer'
 
-export default function App() {
+const verticalData = [
+  { key: '1', label: 'Mobile App Development' },
+  { key: '2', label: 'Web Development' },
+  { key: '3', label: 'Creative Development' },
+  { key: '4', label: 'Algorithms' },
+  { key: '5', label: 'Data Structures' },
+  { key: '6', label: 'Programming Fundamentals' },
+  { key: '7', label: 'Programming 1' },
+  { key: '8', label: 'Intro to Calculus' },
+  { key: '9', label: 'Vectors & Mechanics' },
+  { key: '10', label: 'Data Mining' },
+  { key: '11', label: 'Office Tools Productivity' },
+  { key: '12', label: 'Digital & Logical Systems' },
+  { key: '13', label: 'Critical Thinking' },
+  { key: '14', label: 'Machine Learning' },
+  { key: '15', label: 'System Administration' },
+];
+
+const horizontalData = [
+  { key: '1', imageUrl: require("./assets/images/pic1.jpg"), label: 'Create', minilabel: '12 Tasks' },
+  { key: '2', imageUrl: require("./assets/images/pic2.jpg"), label: 'Study', minilabel: '12 Tasks' },
+  { key: '3', imageUrl: require("./assets/images/pic1.jpg"), label: 'Cook', minilabel: '12 Tasks' },
+  { key: '4', imageUrl: require("./assets/images/pic2.jpg"), label: 'Code', minilabel: '12 Tasks' },
+  { key: '5', imageUrl: require("./assets/images/pic1.jpg"), label: 'Teach', minilabel: '12 Tasks' },
+  { key: '6', imageUrl: require("./assets/images/pic2.jpg"), label: 'Party', minilabel: '12 Tasks' },
+  { key: '7', imageUrl: require("./assets/images/pic1.jpg"), label: 'Teach', minilabel: '12 Tasks' },
+  { key: '8', imageUrl: require("./assets/images/pic2.jpg"), label: 'Party', minilabel: '12 Tasks' },
+];
+
+const ProfileImage = require("./assets/images/profile.png");
+// const FilterImage = require("./assets/Images/FilterIcon.png");
+// const SearchImage = require("./assets/Images/SearchIcon.png");
+
+/*const handleFilterPress = () => {
+  alert('Filter button pressed.\nCannot use button component for android to render images through expo go');
+};*/
+
+
+const handleButtonPress = () => {
+  alert('Button can only be rendered using string (for android using expo)\nThank you for your time')
+}
+
+const App =() => {
+
   return (
     <>
-     <View style={{ flex: 1, backgroundColor: '#f7f0e8' }}>
+    <SafeAreaView style={{flex: 1,}}>
+    <View style={styles.container}>
+    <StatusBar style="auto" />
+    <ScrollView>
+
+    <View style={{marginBottom: 20, marginTop: 60, flexDirection: 'row',}}>
+      
       <View>
-      <Text style={{ width: 180, height: 37, top: 49, fontWeight: 700, fontSize: 32, lineHeight: 38.4, left: 20 }}>Hello, Devs</Text>
+      <Text style={{fontSize: 28, fontWeight: 'bold', marginLeft: 30,}}>Hello, Devs</Text>
+      <Text style={{fontsize: 8, marginLeft: 30,}}>14 tasks today</Text>
+      </View> 
 
-      <Text style={{ width: 85, height: 13, top: 59, fontSize: 12, fontWeight: 500, lineHeight: 14.4, left: 20 }}>14 tasks today</Text>
+      <Image source={ProfileImage} />
 
-      <TextInput style={{borderColor: "white"}}/>
-      <StatusBar style="auto" />
+      
+    </View>
+
+    <View style={{flexDirection: 'row', marginLeft: 18,}}>
+      
+      <View style={{backgroundColor: "white", width: 280, height: 47, marginLeft: 10, borderRadius: 10, top: 3,}}>
+        
+      <TextInput placeholder='Search' placeholderTextColor='#999' style={{backgroundColor: "white", width: 150, height: 40, borderRadius: 10, marginLeft: 45, top: -23, }} />
       </View>
-      <Text style={{fontSize: 24, fontWeight: 'bold', top: 90, left: 20}}>Categoris</Text>
-    <ScrollView horizontal={true} contentContainerStyle={{alignItems: 'center', paddingHorizontal: 10, flexDirection: 'row', left: 5}}>
-        <Scontainer
-         imageUrl="./assets/images/pic1.jpg"
-          label="Bat"
-          minilabel="12 Tasks" />
-        <Scontainer
-         imageUrl="./assets/images/pic1.jpg"
-          label="Study"
-          minilabel="12 Tasks" />
-        <Scontainer
-         imageUrl="./assets/images/pic1.jpg"
-          label="Test"
-          minilabel="12 Tasks" />
-        <Scontainer
-         imageUrl="./assets/images/pic1.jpg"
-          label="Hello"
-          minilabel="12 Tasks" />
-        <Scontainer
-         imageUrl="./assets/images/pic1.jpg"
-          label="Test"
-          minilabel="12 Tasks" />
-        <Scontainer
-         imageUrl="./assets/images/pic1.jpg"
-          label="Study"
-          minilabel="12 Tasks" />
-      </ScrollView>
+
+     
+
+    </View>
+
+    <Text style={{fontSize: 24, fontWeight: 'bold', marginLeft: 30, marginTop: 20, marginBottom: 20,}}>Categories</Text>
+    
+    <FlatList
+          horizontal
+          data={horizontalData}
+          renderItem={({ item }) => (
+            <Scontainer
+              imageUrl={item.imageUrl}
+              label={item.label}
+              minilabel={item.minilabel}
+            />
+          )}
+          keyExtractor={(item) => item.key}
+          contentContainerStyle={{alignItems: 'center', paddingLeft: 20,}}
+          showsHorizontalScrollIndicator={false}
+        />
+
       <View>
-        <Text style={{left: 20}}>Ongoing Task</Text>
+        <Text style={{fontSize: 24, fontWeight: 'bold', marginLeft: 30, marginTop: 20, marginBottom: 10,}}>Ongoing Task</Text>
+        
         <FlatList
-            data={[{ key: '1', label: 'Mobile App Development' }]}
+            data={verticalData}
             renderItem={({ item }) => (
               <Rcontainer
                 label={item.label}
               />
-              
             )}
             keyExtractor={(item) => item.key}
+            style={{flexGrow: 0, marginLeft: 10,}}
           />
-          
       </View>
+
+      <Button title='Test'onPress={handleButtonPress} style={{height: 20, marginTop: 20,}}/>
+
+    </ScrollView>
     </View>
+    </SafeAreaView>
       </>
-
-    // <Scontainer
-    // label="EXERCISE"
-    // imageUrl="./assets/images/pic1.jpg"/>
-
-    // <Scontainer
-    // label="EXERCISE"
-    // imageUrl="./assets/images/pic1.jpg"/>
-
-    // <Scontainer
-    // label="EXERCISE"
-    // imageUrl="./assets/images/pic1.jpg"/>
-    
-    //   </View>
-    // </>
-   
-    
-
   );
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f7f0e8',
+  },
 
+});
 
-
-
-
-
-
-
-
-
-
+export default App;
